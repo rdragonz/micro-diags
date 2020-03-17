@@ -11,16 +11,30 @@ Or visit https://www.gnu.org/licenses/gpl-3.0.en.html
 
 import curses
 
+
+import sys_info
+
 def main():
-	print("Hello, World!")
+	stdscr.refresh()
+
+	sys_info.print_info(curses.newwin(10, 60, 0, 0))
+
+	
+	curses.napms(5000)
 
 
 if __name__ == "__main__":
+
+	#Initialize curses
 	stdscr = curses.initscr()
 	curses.noecho()
 	stdscr.keypad(True)
 	curses.cbreak()
+
+	#Run main function
 	main()
+
+	#End curses
 	curses.nocbreak()
 	stdscr.keypad(False)
 	curses.echo()
